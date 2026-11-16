@@ -1,0 +1,85 @@
+.measure {
+  padding: clamp(2.75rem, 6vw, 4.75rem) 0;
+  background: var(--graphite);
+  color: var(--chalk);
+}
+
+.measure__layout {
+  display: grid;
+  gap: 1.85rem;
+}
+
+.measure__eyebrow {
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--oak);
+  margin-bottom: 0.7rem;
+}
+
+.measure__intro h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.9rem, 4.2vw, 2.85rem);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 0.98;
+  max-width: 12ch;
+}
+
+.measure__lead {
+  margin: 0.75rem 0 1.15rem;
+  max-width: 34ch;
+  color: rgba(230, 226, 219, 0.78);
+  line-height: 1.5;
+}
+
+.measure__steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0;
+  border-top: 1px solid rgba(230, 226, 219, 0.16);
+}
+
+.measure__steps li {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.85rem;
+  padding: 0.95rem 0;
+  border-bottom: 1px solid rgba(230, 226, 219, 0.16);
+}
+
+.measure__n {
+  font-family: var(--font-display);
+  font-size: 1.7rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  padding-top: 0.15rem;
+}
+
+.measure__steps h3 {
+  font-family: var(--font-display);
+  font-size: 1.55rem;
+  font-weight: 650;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.35rem;
+}
+
+.measure__steps p {
+  color: rgba(230, 226, 219, 0.74);
+  line-height: 1.5;
+  max-width: 42ch;
+}
+
+@media (min-width: 900px) {
+  .measure__layout {
+    grid-template-columns: 0.9fr 1.1fr;
+    align-items: end;
+    gap: 3rem;
+  }
+}

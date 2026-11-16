@@ -1,0 +1,86 @@
+.cities {
+  padding: clamp(2.4rem, 5.5vw, 3.75rem) 0;
+  background: var(--paper-deep);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.cities__head {
+  display: grid;
+  gap: 0.45rem;
+  max-width: 34rem;
+  margin-bottom: 1.15rem;
+}
+
+.cities__head h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 3.8vw, 2.45rem);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--graphite);
+}
+
+.cities__head p {
+  color: rgba(20, 22, 24, 0.7);
+  line-height: 1.45;
+  font-size: 0.98rem;
+}
+
+.cities__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0;
+}
+
+.cities__list li {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.15rem;
+  padding: 0.75rem 0;
+  border-top: 1px solid var(--line);
+}
+
+.cities__list li:last-child {
+  border-bottom: 1px solid var(--line);
+}
+
+.cities__name {
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 2.2vw, 1.45rem);
+  font-weight: 650;
+  letter-spacing: 0.03em;
+  color: var(--graphite);
+  line-height: 1.15;
+}
+
+.cities__note {
+  color: rgba(20, 22, 24, 0.62);
+  font-size: 0.9rem;
+  line-height: 1.35;
+}
+
+@media (min-width: 720px) {
+  .cities__list {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    align-items: stretch;
+  }
+
+  .cities__list li {
+    padding: 0.85rem 1rem 0.85rem 0;
+    border-top: 0;
+    border-bottom: 1px solid var(--line);
+    border-right: 1px solid var(--line);
+  }
+
+  .cities__list li:first-child {
+    padding-left: 0;
+  }
+
+  .cities__list li:last-child {
+    border-right: 0;
+    padding-right: 0;
+  }
+}

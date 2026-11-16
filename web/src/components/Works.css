@@ -1,0 +1,125 @@
+.works {
+  padding: clamp(2.75rem, 6vw, 4.75rem) 0;
+  background: var(--paper);
+}
+
+.works__head {
+  display: grid;
+  gap: 0.55rem;
+  max-width: 36rem;
+  margin-bottom: 1.35rem;
+}
+
+.works__head h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.9rem, 4.2vw, 2.85rem);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 0.98;
+  color: var(--graphite);
+}
+
+.works__head p {
+  color: rgba(20, 22, 24, 0.72);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.works__filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-bottom: 1.15rem;
+}
+
+.works__filters button {
+  min-height: 2.2rem;
+  padding: 0.35rem 0.75rem;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  border-radius: 0;
+  background: transparent;
+  color: rgba(20, 22, 24, 0.62);
+  cursor: pointer;
+  transition:
+    color 160ms ease,
+    border-color 160ms ease;
+}
+
+.works__filters button:hover {
+  color: var(--graphite);
+}
+
+.works__filters button.is-active {
+  color: var(--graphite);
+  border-bottom-color: var(--accent);
+  font-weight: 600;
+}
+
+.works__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+}
+
+.works__card {
+  position: relative;
+  overflow: clip;
+  background: var(--paper-deep);
+  aspect-ratio: 4 / 3;
+}
+
+.works__card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 480ms ease;
+}
+
+.works__card:hover img {
+  transform: scale(1.03);
+}
+
+.works__meta {
+  position: absolute;
+  inset: auto 0 0;
+  padding: 0.95rem 0.85rem 0.8rem;
+  background: linear-gradient(to top, rgba(20, 22, 24, 0.78), transparent);
+  color: var(--chalk);
+}
+
+.works__meta h3 {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 650;
+  letter-spacing: 0.03em;
+}
+
+.works__meta p {
+  margin-top: 0.1rem;
+  font-size: 0.88rem;
+  opacity: 0.86;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@media (min-width: 640px) {
+  .works__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.85rem;
+  }
+}
+
+@media (min-width: 980px) {
+  .works__grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+
+  .works__card {
+    aspect-ratio: 5 / 4;
+  }
+}
