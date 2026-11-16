@@ -26,6 +26,15 @@ export function Header() {
     }
   }, [open])
 
+  useEffect(() => {
+    if (!open) return
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setOpen(false)
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [open])
+
   return (
     <header className={`header${solid || open ? ' header--solid' : ''}`}>
       <div className="header__inner container">
@@ -58,18 +67,27 @@ export function Header() {
         </button>
       </div>
 
+      {/*
+        Do not use the HTML `hidden` attribute here — it fights opacity/visibility
+        transitions and previously left a half-visible drawer over the hero.
+      */}
       <div
         id="mobile-nav"
         className={`header__drawer${open ? ' is-open' : ''}`}
-        hidden={!open}
+        aria-hidden={!open}
+        inert={!open ? true : undefined}
       >
         <nav aria-label="Мобильное меню">
           {links.map((link) => (
-            <a key={link.href} href={link.href} onClick={() => setOpen(false)}>
+            <a key={link.href} href={link.href} onClick={() => setOpen(false)} tabIndex={open ? 0 : -1}>
               {link.label}
             </a>
           ))}
-          <a href="tel:+79080571510" onClick={() => setOpen(false)}>
+          <a
+            href="tel:+79080571510"
+            onClick={() => setOpen(false)}
+            tabIndex={open ? 0 : -1}
+          >
             +7 (908) 057-15-10
           </a>
         </nav>

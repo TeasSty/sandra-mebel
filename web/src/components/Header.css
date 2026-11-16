@@ -11,13 +11,17 @@
 }
 
 .header--solid {
-  background: rgba(43, 46, 50, 0.94);
+  /* Opaque bar only — no backdrop-filter here.
+     filter/backdrop-filter would make this short header a containing
+     block for position:fixed descendants and collapse the drawer. */
+  background: rgba(43, 46, 50, 0.96);
   color: var(--chalk);
   box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06);
-  backdrop-filter: blur(10px);
 }
 
 .header__inner {
+  position: relative;
+  z-index: 2;
   display: grid;
   grid-template-columns: auto 1fr auto auto;
   align-items: center;
@@ -80,22 +84,36 @@
 
 .header__drawer {
   position: fixed;
-  inset: var(--header-h) 0 0;
+  top: var(--header-h);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  box-sizing: border-box;
   background: var(--graphite);
   color: var(--chalk);
   padding: 1.5rem var(--pad) 2rem;
-  transform: translateY(-0.5rem);
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  visibility: hidden;
   opacity: 0;
   pointer-events: none;
+  transform: translateY(-0.4rem);
   transition:
     opacity 180ms ease,
-    transform 180ms ease;
+    transform 180ms ease,
+    visibility 0s linear 180ms;
 }
 
 .header__drawer.is-open {
+  visibility: visible;
   opacity: 1;
-  transform: none;
   pointer-events: auto;
+  transform: none;
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease,
+    visibility 0s linear 0s;
 }
 
 .header__drawer nav {
@@ -118,6 +136,6 @@
 
   .header__menu,
   .header__drawer {
-    display: none;
+    display: none !important;
   }
 }
